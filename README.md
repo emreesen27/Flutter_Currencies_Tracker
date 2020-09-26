@@ -97,4 +97,6 @@ Full Currencies List
     "ZAR": "South African Rand"
 }
 ```
+## Example App
+<img src = "https://github.com/emreesen27/Flutter_Currencies_Tracker/blob/assets/example.gif?raw=true">
 
