@@ -7,7 +7,7 @@ A Flutter library where you can keep track of current exchange rates.
 You must add the library as a dependency to your project.
 ```yaml
 dependencies:
- flutter_currencies_tracker: ^0.0.1
+ flutter_currencies_tracker: ^0.0.2
 ```
 
 You should then run `flutter packages get`
