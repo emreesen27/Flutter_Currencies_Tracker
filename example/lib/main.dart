@@ -20,29 +20,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String _updateDate;
+  List _symbol;
+  List _rates;
+  bool _isLoading = false;
+
+  /// If you want to use the map, remove the comment line
+  // Map _fullData;
+
   getData() async {
-    var responseCurrency =
-        await Currency.getConversion(from: 'TRY', to: 'USD', amount: '1');
-    //print(responseCurrency.date);
-    print(responseCurrency.rate);
-
     var responseLatest = await Currency.getLatest(from: 'USD');
-    //print(responseLatest.date);
-    //print(responseLatest.symbol);
+    setState(() {
+      _updateDate = responseLatest.date;
+      _symbol = responseLatest.symbol;
+      _rates = responseLatest.rates;
+      _isLoading = true;
 
-    var responseCurrencies = await Currency.getCurrencies();
-    //print(responseCurrencies);
-
-    var responseTimeLine = await Currency.getTimeSeries(
-      startDate: '2020-01-01',
-      endDate: '2020-01-20',
-      from: 'USD',
-      to: 'TRY',
-    );
-
-    var responseHistorical =
-        await Currency.getHistorical(from: 'TRY', date: '2012-01-01');
-
+      /// If you want to use the map, remove the comment line
+      // _fullData = responseLatest.symbolAndRates;
+    });
   }
 
   @override
@@ -54,9 +50,30 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+            _isLoading == false ? 'Last Update:' : 'Last Update:$_updateDate'),
+      ),
       body: Container(
         child: Center(
-          child: Text('asdasd'),
+          child: _isLoading == true
+              ? ListView.builder(
+                  itemCount: _rates.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: ListTile(
+                        leading: Icon(Icons.monetization_on),
+
+                        /// If you want to use the map
+                        // _fullData.keys.elementAt(index) returns symbol
+                        title: Text('${_symbol.elementAt(index)}'),
+                        // _fullData.value.elementAt(index) returns symbol
+                        subtitle: Text('${_rates.elementAt(index)}'),
+                      ),
+                    );
+                  },
+                )
+              : CircularProgressIndicator(),
         ),
       ),
     );
