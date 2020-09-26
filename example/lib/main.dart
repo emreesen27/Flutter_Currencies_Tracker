@@ -9,6 +9,7 @@ class MyExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }
@@ -24,11 +25,13 @@ class _HomeState extends State<Home> {
   List _symbol;
   List _rates;
   bool _isLoading = false;
+  Map currenciesMap;
 
   /// If you want to use the map, remove the comment line
   // Map _fullData;
 
   getData() async {
+    currenciesMap = await Currency.getCurrencies();
     var responseLatest = await Currency.getLatest(from: 'USD');
     setState(() {
       _updateDate = responseLatest.date;
@@ -52,7 +55,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            _isLoading == false ? 'Last Update:' : 'Last Update:$_updateDate'),
+          _isLoading == false
+              ? 'Last Update:'
+              : 'Base: USD Last Update: $_updateDate',
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
       ),
       body: Container(
         child: Center(
@@ -66,7 +75,8 @@ class _HomeState extends State<Home> {
 
                         /// If you want to use the map
                         // _fullData.keys.elementAt(index) returns symbol
-                        title: Text('${_symbol.elementAt(index)}'),
+                        title:
+                            Text('${currenciesMap[_symbol.elementAt(index)]}'),
                         // _fullData.value.elementAt(index) returns symbol
                         subtitle: Text('${_rates.elementAt(index)}'),
                       ),

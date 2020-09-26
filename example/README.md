@@ -1,16 +1,95 @@
 # example
 
-A new Flutter application.
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_currencies_tracker/flutter_currencies_tracker.dart';
 
-## Getting Started
+void main() {
+  runApp(MyExample());
+}
 
-This project is a starting point for a Flutter application.
+class MyExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    );
+  }
+}
 
-A few resources to get you started if this is your first Flutter project:
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+class _HomeState extends State<Home> {
+  String _updateDate;
+  List _symbol;
+  List _rates;
+  bool _isLoading = false;
+  Map currenciesMap;
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  /// If you want to use the map, remove the comment line
+  // Map _fullData;
+
+  getData() async {
+    currenciesMap = await Currency.getCurrencies();
+    var responseLatest = await Currency.getLatest(from: 'USD');
+    setState(() {
+      _updateDate = responseLatest.date;
+      _symbol = responseLatest.symbol;
+      _rates = responseLatest.rates;
+      _isLoading = true;
+
+      /// If you want to use the map, remove the comment line
+      // _fullData = responseLatest.symbolAndRates;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          _isLoading == false
+              ? 'Last Update:'
+              : 'Base: USD Last Update: $_updateDate',
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
+      ),
+      body: Container(
+        child: Center(
+          child: _isLoading == true
+              ? ListView.builder(
+                  itemCount: _rates.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: ListTile(
+                        leading: Icon(Icons.monetization_on),
+
+                        /// If you want to use the map
+                        // _fullData.keys.elementAt(index) returns symbol
+                        title:
+                            Text('${currenciesMap[_symbol.elementAt(index)]}'),
+                        // _fullData.value.elementAt(index) returns symbol
+                        subtitle: Text('${_rates.elementAt(index)}'),
+                      ),
+                    );
+                  },
+                )
+              : CircularProgressIndicator(),
+        ),
+      ),
+    );
+  }
+}
+```
