@@ -2,6 +2,8 @@
 
 A Flutter library where you can keep track of current exchange rates.
 
+pub.dev = https://pub.dev/packages/flutter_currencies_tracker;
+
 ## Getting Started
 
 You must add the library as a dependency to your project.
