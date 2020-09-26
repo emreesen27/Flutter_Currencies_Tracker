@@ -22,16 +22,16 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   getData() async {
     var responseCurrency =
-        await Currency.getConversion(from: 'AUD', to: 'USD', amount: '1');
+        await Currency.getConversion(from: 'TRY', to: 'USD', amount: '1');
     //print(responseCurrency.date);
-    //print(responseCurrency.rate);
+    print(responseCurrency.rate);
 
     var responseLatest = await Currency.getLatest(from: 'USD');
     //print(responseLatest.date);
-    //print(responseLatest.rates);
+    //print(responseLatest.symbol);
 
     var responseCurrencies = await Currency.getCurrencies();
-     //print(responseCurrencies);
+    //print(responseCurrencies);
 
     var responseTimeLine = await Currency.getTimeSeries(
       startDate: '2020-01-01',
@@ -40,9 +40,9 @@ class _HomeState extends State<Home> {
       to: 'TRY',
     );
 
-    //print(responseTimeLine.rates);
-    //print(responseTimeLine.date);
-    //print(responseTimeLine.dates);
+    var responseHistorical =
+        await Currency.getHistorical(from: 'TRY', date: '2012-01-01');
+
   }
 
   @override
