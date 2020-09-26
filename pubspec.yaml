@@ -1,8 +1,8 @@
 name: flutter_currencies_tracker
-description: A new Flutter package.
+description: A Flutter library where you can keep track of current exchange rates.
 version: 0.0.1
-author:
-homepage:
+author: A.Emre ESEN<emreesen27@gmail.com>
+homepage: https://github.com/emreesen27/Flutter_Currencies_Tracker.git
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 26.01.2020
 
-* TODO: Describe initial release.
+* Initial build for flutter currencies tracker  library.
