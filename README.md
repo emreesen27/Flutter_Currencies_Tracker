@@ -30,7 +30,7 @@ var result = await Currency.getLatest(from: 'USD');
     List symbol = result.symbol; // Returns currency symbols eg: [AUD, BGN, BRL, ... ]
     Map fullData = result.symbolAndRates; // Returns the results in Map eg: {AUD: 1.4224, BGN: 1.6811, BRL: 5.5493, ... }
 ```
- This method returns the latest rates.You have to set the currency you want to the 'from' parameter.
+You can convert to currencies using the amount parameter.
 ```dart
 var result = await Currency.getConversion(from: 'USD', to: 'TRY', amount: '1');
     String date = result.date; // Returns the last updated date
