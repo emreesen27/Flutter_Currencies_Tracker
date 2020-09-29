@@ -17,7 +17,7 @@ You should then run `flutter packages get`
 Now in your Dart code, you can use:
 
 ```dart
-import 'package:flutter_currencies_tracker/flutter_currencies_tracker.dart';
+import 'package:flutter_currencies_tracker/flutter_currencies_tracker.dart'
 ```
 
 ## Usage Example
