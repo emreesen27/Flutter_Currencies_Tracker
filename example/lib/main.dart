@@ -77,7 +77,7 @@ class _HomeState extends State<Home> {
                         // _fullData.keys.elementAt(index) returns symbol
                         title:
                             Text('${currenciesMap[_symbol.elementAt(index)]}'),
-                        // _fullData.value.elementAt(index) returns symbol
+                        // _fullData.value.elementAt(index) returns rates
                         subtitle: Text('${_rates.elementAt(index)}'),
                       ),
                     );

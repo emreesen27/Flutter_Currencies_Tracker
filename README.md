@@ -9,7 +9,7 @@ pub.dev = https://pub.dev/packages/flutter_currencies_tracker;
 You must add the library as a dependency to your project.
 ```yaml
 dependencies:
- flutter_currencies_tracker: ^0.0.2
+ flutter_currencies_tracker: ^0.0.3
 ```
 
 You should then run `flutter packages get`
