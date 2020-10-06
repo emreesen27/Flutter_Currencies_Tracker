@@ -22,7 +22,7 @@ class Currency {
       var _data = CurrencyModel.fromJson(json.decode(_response.body));
       return ConversionModel(
         date: _data.date, // update date Type: String
-        rate: _data.rates.values.elementAt(0), // conversion rate Type: double
+        rate: _data.rates.values.elementAt(0), // conversion rate Type: dynamic
       );
     } else
       return throw ('statusCode: ${_response.statusCode}');

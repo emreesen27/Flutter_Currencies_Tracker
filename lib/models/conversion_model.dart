@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ConversionModel {
   String date;
-  double rate;
+  dynamic rate;
 
   ConversionModel({
     @required this.date,

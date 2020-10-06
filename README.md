@@ -7,7 +7,7 @@ A Flutter library where you can keep track of current exchange rates.
 You must add the library as a dependency to your project.
 ```yaml
 dependencies:
- flutter_currencies_tracker: ^0.0.3
+ flutter_currencies_tracker: ^0.0.4
 ```
 
 You should then run `flutter packages get`
@@ -32,7 +32,7 @@ You can convert to currencies using the amount parameter.
 ```dart
 var result = await Currency.getConversion(from: 'USD', to: 'TRY', amount: '1');
     String date = result.date; // Returns the last updated date
-    double rate = result.rate; // Returns the result in double.
+    var rate = result.rate; // Returns the result in dynamic.
 ```
  This method returns historical rates for any working day since 4 January 1999.
 ```dart
