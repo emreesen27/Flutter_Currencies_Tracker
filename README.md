@@ -98,5 +98,5 @@ Full Currencies List
 }
 ```
 ## Example App
-<img src = "https://github.com/emreesen27/Flutter_Currencies_Tracker/blob/assets/example.gif?raw=true">
+<img height=500 width=250 src = "https://github.com/emreesen27/Flutter_Currencies_Tracker/blob/assets/example.gif?raw=true">
 
