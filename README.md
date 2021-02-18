@@ -1,3 +1,6 @@
+
+# !!! This library has been deprecated.
+
 # Flutter Currencies Tracker
 
 A Flutter library where you can keep track of current exchange rates.
